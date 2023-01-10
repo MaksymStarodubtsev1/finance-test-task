@@ -1,16 +1,21 @@
 import {io} from "socket.io-client";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 const socket = io("ws://localhost:4000", {
   reconnectionDelayMax: 10000
 });
 
-
 export const useTradingConnections = () => {
+const [connectionStatus, setConnectionStatus] = useState(false)
 
   useEffect(() => {
     socket.on("connect", (res) => {
+      setConnectionStatus(true)
       console.log('hello', res);
+    })
+
+    socket.on('disconnect',(res) => {
+      setConnectionStatus(false)
     })
 
     socket.on("ticker", (result) => {
@@ -18,7 +23,7 @@ export const useTradingConnections = () => {
     })
 
     return () => {
-      socket.off("testResponse");
+      socket.off();
     };
   });
 
@@ -31,6 +36,7 @@ export const useTradingConnections = () => {
   }
 
   return {
+    connectionStatus,
     startTrading,
     stopTrading
   }
