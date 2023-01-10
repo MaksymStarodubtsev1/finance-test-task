@@ -51,6 +51,10 @@ function trackTickers(socket) {
     getQuotes(socket);
   }, FETCH_INTERVAL);
 
+  socket.on('stopTrading', function() {
+    clearInterval(timer);
+  });
+
   socket.on('disconnect', function() {
     clearInterval(timer);
   });
