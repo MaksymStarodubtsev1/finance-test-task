@@ -14,8 +14,6 @@ export const WebSocketProvider = ({ children }) => {
   let socket;
   let ws;
 
-
-
   if (!socket) {
     socket = io.connect(data.WS_BASE)
   }

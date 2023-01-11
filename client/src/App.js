@@ -1,14 +1,19 @@
 import './App.css';
-import {SwitchConnection} from "./components/Elements/SwitchConnection";
-import {StatusBar} from "./components/connections/StatusBar";
+import {SwitchConnection} from "./components/elements/SwitchConnection";
+import {StatusBar} from "./components/elements/StatusBar";
+import {useSelector} from "react-redux";
+import {useWebSocketContext} from "./context/WebSocketProvider";
 
 function App() {
+  const {connection} = useSelector(state => state.trading)
+  const {startTrading, stopTrading} = useWebSocketContext()
 
   return (
     <div className="App">
       <header className="App-header">
-        <StatusBar />
-        <SwitchConnection />
+        <SwitchConnection start={startTrading} stop={stopTrading} />
+
+        <StatusBar connections={connection}/>
       </header>
     </div>
   );
