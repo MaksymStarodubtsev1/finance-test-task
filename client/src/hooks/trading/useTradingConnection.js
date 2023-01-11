@@ -9,17 +9,14 @@ export const useTradingConnection = (socket) => {
   useEffect(() => {
     socket.on("connect", () => {
       dispatch({type: SET_TRADING_STATUS, payload: true})
-      console.log('result', true);
     })
 
     socket.on('disconnect', () => {
       dispatch({type: SET_TRADING_STATUS, payload: false})
-      console.log('result', false);
     })
 
     socket.on("ticker", (result) => {
       dispatch({type: SET_TRADING_UPDATE, payload: result})
-      console.log('result', result);
     })
 
     return () => {
