@@ -1,11 +1,11 @@
 import {Switch} from "@mui/material";
 import {useState} from "react";
-import {useTradingConnections} from "../hooks/trading/useTradingConnections";
+import {useTrading} from "../hooks/trading/useTrading";
 
 export const SwitchConnection = () => {
   const [checked, setChecked] = useState(false)
 
-  const {stopTrading, startTrading} = useTradingConnections()
+  const {stopTrading, startTrading} = useTrading()
 
   function handleChange(event) {
     if(!checked) startTrading()
