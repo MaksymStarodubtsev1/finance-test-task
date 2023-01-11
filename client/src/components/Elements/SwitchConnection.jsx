@@ -1,11 +1,11 @@
 import {Switch} from "@mui/material";
 import {useState} from "react";
-import {useTrading} from "../hooks/trading/useTrading";
+import {useWebSocketContext} from "../../context/WebSocketProvider";
 
 export const SwitchConnection = () => {
   const [checked, setChecked] = useState(false)
 
-  const {stopTrading, startTrading} = useTrading()
+  const {startTrading, stopTrading} = useWebSocketContext()
 
   function handleChange(event) {
     if(!checked) startTrading()

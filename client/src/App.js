@@ -1,5 +1,5 @@
 import './App.css';
-import {SwitchConnection} from "./components/SwitchConnection";
+import {SwitchConnection} from "./components/Elements/SwitchConnection";
 import {StatusBar} from "./components/connections/StatusBar";
 
 function App() {
