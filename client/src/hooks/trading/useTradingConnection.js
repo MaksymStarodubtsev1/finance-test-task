@@ -16,6 +16,7 @@ export const useTradingConnection = (socket) => {
     })
 
     socket.on("ticker", (result) => {
+      console.log('ticker')
       dispatch({type: SET_TRADING_UPDATE, payload: result})
     })
 

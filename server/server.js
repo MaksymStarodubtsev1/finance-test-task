@@ -7,6 +7,10 @@ const cors = require('cors');
 const FETCH_INTERVAL = 5000;
 const PORT = process.env.PORT || 4000;
 
+const fetchInterval = {
+  value: FETCH_INTERVAL
+}
+
 const tickers = [
   'AAPL', // Apple
   'GOOGL', // Alphabet
@@ -49,7 +53,7 @@ function trackTickers(socket) {
   // every N seconds
   const timer = setInterval(function() {
     getQuotes(socket);
-  }, FETCH_INTERVAL);
+  }, fetchInterval.value);
 
   socket.on('stopTrading', function() {
     clearInterval(timer);
@@ -77,6 +81,14 @@ app.get('/', function(req, res) {
 socketServer.on('connection', (socket) => {
   socket.on('start', () => {
     trackTickers(socket);
+  });
+
+  socket.on('changeInterval', function(arg, callback) {
+    fetchInterval.value = arg.interval
+    if(fetchInterval.value === arg.interval) {
+      callback({result: 'success'});
+    }
+    callback({result: 'error'});
   });
 });
 

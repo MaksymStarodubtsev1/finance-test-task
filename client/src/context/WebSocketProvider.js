@@ -20,14 +20,16 @@ export const WebSocketProvider = ({ children }) => {
 
   const {
     startTrading,
-    stopTrading
+    stopTrading,
+    changeUpdateInterval
   } = useTrading(socket)
   useTradingConnection(socket)
 
   ws = {
     socket,
     startTrading,
-    stopTrading
+    stopTrading,
+    changeUpdateInterval,
   }
 
   return (

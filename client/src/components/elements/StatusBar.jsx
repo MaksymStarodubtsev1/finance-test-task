@@ -1,6 +1,6 @@
-export const StatusBar = ({connections}) => (
+export const StatusBar = ({status}) => (
     <span
       className="icon-rss"
-      style={{color:`${connections ? 'green': 'red'}`}}
+      style={{color:`${status ? 'green': 'red'}`}}
     />
 )

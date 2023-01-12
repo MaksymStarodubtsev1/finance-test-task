@@ -1,8 +1,9 @@
-import './App.css';
+import './styles/App.css';
 import {SwitchConnection} from "./components/elements/SwitchConnection";
 import {StatusBar} from "./components/elements/StatusBar";
 import {useSelector} from "react-redux";
 import {useWebSocketContext} from "./context/WebSocketProvider";
+import {Interval} from "./components/interval";
 
 function App() {
   const {connection} = useSelector(state => state.trading)
@@ -12,8 +13,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <SwitchConnection start={startTrading} stop={stopTrading} />
-
-        <StatusBar connections={connection}/>
+        <Interval />
+        <StatusBar status={connection}/>
       </header>
     </div>
   );
