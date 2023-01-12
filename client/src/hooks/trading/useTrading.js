@@ -4,16 +4,14 @@ export const useTrading = (socket) => {
     socket.emit('start')
   }
 
-  function changeUpdateInterval(interval = 5) {
-    const correctInterval = interval * 1000
-
-    socket.emit('changeInterval', {interval: correctInterval}, (response) => {
-      console.log(response.result)
-    })
-  }
-
   function stopTrading() {
     socket.emit('stopTrading')
+  }
+
+  function changeUpdateInterval(interval = 5) {
+    socket.emit('changeInterval', {interval}, (response) => {
+      console.log(response.result)
+    })
   }
 
   return {

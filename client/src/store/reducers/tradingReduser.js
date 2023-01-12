@@ -10,6 +10,7 @@ export const tradingReducer = (state = initialState, action) => {
     case SET_TRADING_UPDATE:
       return {
         ...state,
+        tradingInfo: action.payload,
       }
 
     case SET_TRADING_STATUS:

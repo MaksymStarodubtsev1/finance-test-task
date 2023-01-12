@@ -5,6 +5,7 @@ const io = require('socket.io');
 const cors = require('cors');
 
 const FETCH_INTERVAL = 5000;
+const MIN_INTERVAL = 4;
 const PORT = process.env.PORT || 4000;
 
 const fetchInterval = {
@@ -64,6 +65,17 @@ function trackTickers(socket) {
   });
 }
 
+function handleInterval({interval}, callback) {
+  if(interval > MIN_INTERVAL){
+    fetchInterval.value = interval * 1000
+
+    callback({result: 'success'});
+  } else callback({
+    result: 'error',
+    message: `require larger than ${MIN_INTERVAL}`
+  });
+}
+
 const app = express();
 app.use(cors());
 const server = http.createServer(app);
@@ -83,13 +95,7 @@ socketServer.on('connection', (socket) => {
     trackTickers(socket);
   });
 
-  socket.on('changeInterval', function(arg, callback) {
-    fetchInterval.value = arg.interval
-    if(fetchInterval.value === arg.interval) {
-      callback({result: 'success'});
-    }
-    callback({result: 'error'});
-  });
+  socket.on('changeInterval', handleInterval);
 });
 
 server.listen(PORT, () => {
