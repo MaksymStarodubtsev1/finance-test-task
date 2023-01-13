@@ -23,14 +23,16 @@ const FlexContainer = styled(Box)({
 })
 
 export const CoinContainer = styled(FlexContainer)({
-  flexDirection: "column",
+  flexDirection: "row",
+  justifyContent: 'center',
+  flexWrap: 'wrap',
   alignItems: "center",
   gap: '16px',
-  width: '100%',
 })
 
 export const CoinBox = styled(FlexContainer)({
   flexDirection: 'row',
+  justifyContent: 'space-between',
   alignItems: 'center',
   gap: '8px',
   border: '1px solid black',
@@ -41,11 +43,12 @@ export const CoinBox = styled(FlexContainer)({
 
 export const CoinInfo = styled(FlexContainer)({
   flexDirection: 'column',
-  gap: '4px'
+  gap: '4px',
+  textVertical: 'center'
 })
 
 export const CoinInfoWrapper = styled(FlexContainer)({
-  gap: '4px',
+  gap: '8px',
   alignItems: 'center'
 })
 
