@@ -5,7 +5,7 @@ const io = require('socket.io');
 const cors = require('cors');
 
 const FETCH_INTERVAL = 5000;
-const MIN_INTERVAL = 4;
+const MIN_INTERVAL = 2;
 const PORT = process.env.PORT || 4000;
 
 const fetchInterval = {

@@ -39,11 +39,25 @@ export const CoinBox = styled(FlexContainer)({
   borderRadius: '10px'
 })
 
-export const CoinLabel = styled(FlexContainer)({
+export const CoinInfo = styled(FlexContainer)({
   flexDirection: 'column',
   gap: '4px'
 })
 
-export const CoinStatus = styled(Box)({
-  textAlign: 'center'
+export const CoinInfoWrapper = styled(FlexContainer)({
+  gap: '4px',
+  alignItems: 'center'
 })
+
+export const CoinStatus = styled(FlexContainer)(({ _, bgcolor }) => ({
+  textAlign: 'center',
+  verticalAlign: 'center',
+  padding: '8px',
+  borderRadius: '8px',
+  backgroundColor: `${bgcolor}`,
+  border: '1px solid black',
+
+  "> span": {
+    marginRight: '-1px',
+  },
+}))

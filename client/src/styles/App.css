@@ -1,4 +1,5 @@
-@import "fonts/style.css";
+@import "fonts/indicator/style.css";
+@import "fonts/arrows/style.css";
 
 .App-header {
   background-color: #282c34;
